@@ -9,7 +9,7 @@ function Verify() {
   const verification = async () => {
     try {
       await auth.updateVerification(userID, secretd);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log("error");
     }

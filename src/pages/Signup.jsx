@@ -16,18 +16,12 @@ function Signup() {
     const user = await auth.signup(data);
     if (user) {
       await auth.verification();
-      dispatch(login);
-      /*  if (verificaiton) {
-        const userData = await auth.getUser();
-        if (userData) {
-        
-        }
-        navigate("/");
-      } */
+      dispatch(login());
     }
   };
   const google = async () => {
     await auth.OauthGoogle();
+    dispatch(login);
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
@@ -71,7 +65,10 @@ function Signup() {
             Signup
           </Button>
         </form>
-        <span className=" text-right block font-medium my-2 cursor-pointer">
+        <span
+          className=" text-right block font-medium my-2 cursor-pointer"
+          onClick={() => navigate("/login")}
+        >
           already have a account?
         </span>
         <p className=" font-medium my-2 text-xl  ">

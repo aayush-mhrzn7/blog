@@ -10,6 +10,7 @@ const authSlice = createSlice({
     login: (state, action) => {
       state.status = true;
       state.user = action.payload;
+      console.log("activer");
     },
     logout: (state, action) => {
       state.status = false;

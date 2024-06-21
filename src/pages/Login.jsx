@@ -15,12 +15,13 @@ function Login() {
     const user = await auth.login(data);
     if (user) {
       const userData = await auth.getUser();
-      if (userData) dispatch(login);
-      navigate("/");
+      if (userData) dispatch(login());
+      navigate("/home");
     }
   };
   const google = async () => {
     await auth.OauthGoogle();
+    dispatch(login);
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
