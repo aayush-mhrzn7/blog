@@ -13,7 +13,7 @@ import Forgot from "./pages/Forgot.jsx";
 import Reset from "./pages/Reset.jsx";
 import Error from "./pages/Error.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
-import Starter from "./pages/Starter.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,18 +23,11 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <AuthLayout>
-            <Starter />
-          </AuthLayout>
-        ),
-      },
-      {
-        path: "/home",
-        element: (
-          <AuthLayout>
             <Home />
           </AuthLayout>
         ),
       },
+
       {
         path: "/signup",
         element: (

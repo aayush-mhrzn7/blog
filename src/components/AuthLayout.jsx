@@ -16,3 +16,4 @@ export default function Protected({ children, authentication = true }) {
   }, [authentication, authstatus]);
   return loader ? <h1>Loading.... </h1> : <>{children}</>;
 }
+/* intially lets say authstatus is false and authenticaion true */
