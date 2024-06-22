@@ -75,7 +75,7 @@ export class AuthService {
     try {
       this.account.createOAuth2Session(
         "google",
-        "http://localhost:5173/home",
+        "http://localhost:5173/",
         "http://localhost:5173/failed"
       );
     } catch (error) {

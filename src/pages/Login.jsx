@@ -7,6 +7,7 @@ import auth from "../../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../tools/authSlice";
+import toast from "react-hot-toast";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,12 +17,14 @@ function Login() {
     if (user) {
       const userData = await auth.getUser();
       if (userData) dispatch(login());
-      navigate("/home");
+      navigate("/");
     }
   };
   const google = async () => {
-    await auth.OauthGoogle();
-    dispatch(login);
+    const data = await auth.OauthGoogle();
+    if (data) {
+      dispatch(login());
+    }
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
@@ -71,6 +74,7 @@ function Login() {
         <Button
           onClick={() => {
             google();
+            console.log(`clicked`);
           }}
           classname=" text-lg flex items-center justify-center w-full mt-3 text-black bg-white border-2 font-semibold border-slate-300"
         >

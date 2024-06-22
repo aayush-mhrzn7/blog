@@ -19,7 +19,7 @@ function Logout({ ...props }) {
         {...props}
         /*  className=" text-white bg-black p-3 w-96" */
       >
-        logout
+        Logout
       </button>
     </div>
   );

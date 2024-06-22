@@ -15,13 +15,17 @@ function Signup() {
   const signup = async (data) => {
     const user = await auth.signup(data);
     if (user) {
-      await auth.verification();
-      dispatch(login());
+      const verify = await auth.verification();
+      if (verify) {
+        dispatch(login());
+      }
     }
   };
   const google = async () => {
-    await auth.OauthGoogle();
-    dispatch(login);
+    const data = await auth.OauthGoogle();
+    if (data) {
+      dispatch(login());
+    }
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">

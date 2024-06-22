@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logout from "./Logout";
-import auth from "../../appwrite/auth";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -11,7 +10,7 @@ function Header() {
   const navItems = [
     {
       name: "Home",
-      slug: "/home",
+      slug: "/",
       active: authStatus,
     },
     {
@@ -36,7 +35,7 @@ function Header() {
     },
   ];
   return (
-    <header className="p-7 z-10 w-full h-12 flex items-center  justify-between  shadow-lg ">
+    <header className="p-7 px-28 max-sm:px-7 z-10 w-full h-12 flex items-center  justify-between  shadow-lg ">
       <Link to="/" className="text-xl font-bold font-primary ">
         Blog
       </Link>
@@ -54,7 +53,7 @@ function Header() {
             ) : null
           )}
           {authStatus && (
-            <li>
+            <li className="mx-7 font-semibold">
               <Logout></Logout>
             </li>
           )}
