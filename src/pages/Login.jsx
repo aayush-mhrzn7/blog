@@ -7,7 +7,7 @@ import auth from "../../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../tools/authSlice";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,7 +16,9 @@ function Login() {
     const user = await auth.login(data);
     if (user) {
       const userData = await auth.getUser();
-      if (userData) dispatch(login());
+      if (userData) {
+        dispatch(login());
+      }
       navigate("/");
     }
   };
