@@ -1,15 +1,19 @@
 import React from "react";
 
-function Button({
-  type = "",
-  classname = "",
+function Button(
+  {
+    type = "",
+    classname = "",
 
-  ...props
-}) {
+    ...props
+  },
+  ref
+) {
   return (
     <div>
       <button
         type={type}
+        ref={ref}
         className={` font-primary p-3 rounded-md ${classname} `}
         {...props}
       ></button>
@@ -17,4 +21,4 @@ function Button({
   );
 }
 
-export default Button;
+export default React.forwardRef(Button);

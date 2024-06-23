@@ -15,7 +15,7 @@ const Input = React.forwardRef(function Input(
   return (
     <div>
       <label
-        className={` font-primary block font-medium text-lg ${labelStyle}`}
+        className={` font-primary block font-semibold text-xl ${labelStyle}`}
         htmlFor={id}
       >
         {label}
@@ -26,7 +26,7 @@ const Input = React.forwardRef(function Input(
         placeholder={placeholder}
         id={id}
         {...props}
-        className={` font-primary p-3 my-1 rounded-md ${className}`}
+        className={` font-primary p-3  rounded-md ${className}`}
       />
     </div>
   );

@@ -16,11 +16,11 @@ export class AuthService {
         password,
         name
       );
-      if (user) {
+      /* if (user) {
         return this.login({ email, password });
       } else {
         return user;
-      }
+      } */
     } catch (error) {
       console.log("error during signup", error);
     }

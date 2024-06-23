@@ -17,20 +17,20 @@ function Login() {
     if (user) {
       const userData = await auth.getUser();
       if (userData) {
-        dispatch(login());
+        toast.success("logged in sucessfully");
+        dispatch(login(userData));
       }
       navigate("/");
     }
   };
   const google = async () => {
-    const data = await auth.OauthGoogle();
-    if (data) {
-      dispatch(login());
-    }
+    const googles = await auth.OauthGoogle();
+    dispatch(login(googles));
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <div className="w-1/3">
+        <Toaster position="top-right" />
         <h1 className="text-3xl text-center mb-4 font-semibold ">
           Welcome Back!!
         </h1>
@@ -74,10 +74,7 @@ function Login() {
         </span>
         <p className=" font-medium my-2 text-xl  ">Login via another method?</p>
         <Button
-          onClick={() => {
-            google();
-            console.log(`clicked`);
-          }}
+          onClick={() => google()}
           classname=" text-lg flex items-center justify-center w-full mt-3 text-black bg-white border-2 font-semibold border-slate-300"
         >
           <FcGoogle className="mr-4" />

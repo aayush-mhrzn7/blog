@@ -4,7 +4,7 @@ import think from "../assets/think.png";
 function Home() {
   return (
     <div>
-      <section className="w-full h-1/2  mt-28 xl:px-56 max-md:px-10 max-sm:px-3 max-md:mt-10  ">
+      <section className="w-full h-1/2  mt-10 xl:px-56 max-md:px-10 max-sm:px-3 max-md:mt-10  ">
         <div className="flex max-lg:flex-col flex-row items-center justify-center   ">
           <div className="mr-6 flex flex-col justify-center">
             <h1 className="text-5xl max-lg:text-4xl mb-6 font-primary font-medium max-sm:text-3xl">

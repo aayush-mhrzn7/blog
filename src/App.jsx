@@ -15,7 +15,7 @@ function App() {
         if (userData) {
           dispatch(login(userData));
         } else {
-          dispatch(logout);
+          dispatch(logout());
         }
       })
       .catch((err) => console.log(err));

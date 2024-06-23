@@ -13,6 +13,10 @@ import Forgot from "./pages/Forgot.jsx";
 import Reset from "./pages/Reset.jsx";
 import Error from "./pages/Error.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
+import AllPost from "./posts/AllPost.jsx";
+import PostForm from "./posts/PostForm.jsx";
+import Post from "./posts/Post.jsx";
+import EditPost from "./posts/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <AuthLayout authentication={false}>
+          <AuthLayout>
             <Home />
           </AuthLayout>
         ),
@@ -77,19 +81,19 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      /*  {
-        path: "/all-post",
+      {
+        path: "/all-posts",
         element: (
           <AuthLayout>
-            <Signup />
+            <AllPost />
           </AuthLayout>
         ),
       },
       {
-        path: "/add-post",
+        path: "/new-post",
         element: (
           <AuthLayout>
-            <Signup />
+            <PostForm />
           </AuthLayout>
         ),
       },
@@ -97,7 +101,7 @@ const router = createBrowserRouter([
         path: "/edit-post/:slug",
         element: (
           <AuthLayout>
-            <Signup />
+            <EditPost />
           </AuthLayout>
         ),
       },
@@ -105,10 +109,10 @@ const router = createBrowserRouter([
         path: "/post/:slug",
         element: (
           <AuthLayout>
-            <Signup />
+            <Post />
           </AuthLayout>
         ),
-      }, */
+      },
     ],
   },
 ]);

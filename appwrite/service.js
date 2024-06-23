@@ -29,7 +29,7 @@ export class AppwriteService {
       console.log("error in creating document. ", error);
     }
   }
-  async getPost({ slug }) {
+  async getPost(slug) {
     try {
       return await this.database.getDocument(
         config.databaseID,
@@ -40,14 +40,7 @@ export class AppwriteService {
       console.log("error in getting the document from appwrite, ", error);
     }
   }
-  async updateDocument({
-    title,
-    content,
-    slug,
-    featuredImage,
-    status,
-    userId,
-  }) {
+  async updateDocument(slug, { title, content, featuredImage, status }) {
     try {
       return await this.database.updateDocument(
         config.databaseID,
@@ -56,17 +49,15 @@ export class AppwriteService {
         {
           title,
           content,
-          slug,
           featuredImage,
           status,
-          userId,
         }
       );
     } catch (error) {
       console.log("error during update of document,", error);
     }
   }
-  async deleteDocument({ slug }) {
+  async deleteDocument(slug) {
     try {
       return (
         await this.database.deleteDocument(
@@ -119,7 +110,7 @@ export class AppwriteService {
     }
   }
   getfilePreview(fileId) {
-    return this.storage.getfilePreview(config.bucketId, fileId);
+    return this.storage.getFilePreview(config.bucketId, fileId);
   }
 }
 

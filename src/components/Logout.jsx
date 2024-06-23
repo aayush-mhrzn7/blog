@@ -3,17 +3,21 @@ import { useDispatch } from "react-redux";
 import auth from "../../appwrite/auth";
 import { logout } from "../../tools/authSlice";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 function Logout({ ...props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const Logout = async () => {
+    toast("logged out");
     auth.logout();
+
     dispatch(logout());
     navigate("/login");
   };
   return (
     <div>
+      <Toaster position="top-right" />
       <button
         onClick={() => Logout()}
         {...props}

@@ -7,29 +7,33 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import auth from "../../appwrite/auth";
 import { login } from "../../tools/authSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm();
   const signup = async (data) => {
     const user = await auth.signup(data);
+    toast("mail sent");
     if (user) {
       const verify = await auth.verification();
       if (verify) {
-        dispatch(login());
+        dispatch(login(user));
+        navigate("/");
       }
     }
   };
   const google = async () => {
     const data = await auth.OauthGoogle();
-    if (data) {
-      dispatch(login());
-    }
+
+    dispatch(login(data));
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <div className="w-1/3">
+        <Toaster position="top-right" />
         <h1 className="text-3xl text-center mb-4 font-semibold ">Join us!!</h1>
         <form onSubmit={handleSubmit(signup)}>
           <Input
