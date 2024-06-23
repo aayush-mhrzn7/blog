@@ -9,7 +9,7 @@ function Logout({ ...props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const Logout = async () => {
-    toast("logged out");
+    toast.success("logged out");
     auth.logout();
 
     dispatch(logout());

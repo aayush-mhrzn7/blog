@@ -16,7 +16,7 @@ function Signup() {
   const { register, handleSubmit } = useForm();
   const signup = async (data) => {
     const user = await auth.signup(data);
-    toast("mail sent");
+    toast.success("mail sent");
     if (user) {
       const verify = await auth.verification();
       if (verify) {

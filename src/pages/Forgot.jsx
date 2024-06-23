@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import auth from "../../appwrite/auth";
 import Input from "../components/Input";
 import Button from "../components/Button";
-Button;
+import toast, { Toaster } from "react-hot-toast";
+
 function Forgot() {
   const { register, handleSubmit } = useForm();
   const forgot = async (data) => {
+    toast.success("sending mail");
     await auth.forgetPassword(data);
   };
   return (
@@ -14,7 +16,7 @@ function Forgot() {
       <h1 className="text-xl mb-4 font-semibold font-primary">
         Forgot Password
       </h1>
-
+      <Toaster position="top-right" />
       <form onSubmit={handleSubmit(forgot)} className="w-1/3">
         <Input
           type="email"

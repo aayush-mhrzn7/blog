@@ -66,6 +66,7 @@ function Login() {
         </form>
         <span
           onClick={() => {
+            toast("sending mail");
             navigate("/forgot-password");
           }}
           className=" text-right block font-medium my-2 cursor-pointer"
