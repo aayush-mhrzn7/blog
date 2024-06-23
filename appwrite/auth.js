@@ -27,9 +27,7 @@ export class AuthService {
   }
   async verification() {
     try {
-      return this.account.createVerification(
-        "https://blog-ruby-rho.vercel.app/verify"
-      );
+      return this.account.createVerification("http://localhost:5173/verify");
     } catch (error) {
       console.log("error made by verification part 1");
     }
@@ -59,7 +57,7 @@ export class AuthService {
     try {
       return await this.account.createRecovery(
         email,
-        "https://blog-ruby-rho.vercel.app/reset"
+        "http://localhost:5173/reset"
       );
     } catch (error) {
       console.log("error during part 1 of forgot password");
@@ -77,8 +75,8 @@ export class AuthService {
     try {
       this.account.createOAuth2Session(
         "google",
-        "https://blog-ruby-rho.vercel.app/",
-        "https://blog-ruby-rho.vercel.app/failed"
+        "http://localhost:5173/",
+        "http://localhost:5173/failed"
       );
     } catch (error) {
       console.log("error during O Auth connection", error);
