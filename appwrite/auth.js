@@ -16,25 +16,22 @@ export class AuthService {
         password,
         name
       );
-      /* if (user) {
-        return this.login({ email, password });
-      } else {
-        return user;
-      } */
     } catch (error) {
       console.log("error during signup", error);
     }
   }
   async verification() {
     try {
-      return this.account.createVerification("http://localhost:5173/verify");
+      return await this.account.createVerification(
+        "http://localhost:5173/verify"
+      );
     } catch (error) {
       console.log("error made by verification part 1");
     }
   }
   async updateVerification(userId, secret) {
     try {
-      return this.account.updateVerification(userId, secret);
+      return await this.account.updateVerification(userId, secret);
     } catch (error) {
       console.log("error during part two of verificaion");
     }
@@ -71,7 +68,7 @@ export class AuthService {
       console.log("error during part 2 of forgot");
     }
   }
-  async OauthGoogle() {
+  OauthGoogle() {
     try {
       this.account.createOAuth2Session(
         "google",

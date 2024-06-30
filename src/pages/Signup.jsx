@@ -16,7 +16,7 @@ function Signup() {
   const { register, handleSubmit } = useForm();
   const signup = async (data) => {
     const user = await auth.signup(data);
-    toast.successnpm("mail sent");
+    toast.success("mail sent");
     if (user) {
       const verify = await auth.verification();
       if (verify) {
@@ -25,8 +25,8 @@ function Signup() {
       }
     }
   };
-  const google = async () => {
-    const data = await auth.OauthGoogle();
+  const google = () => {
+    const data = auth.OauthGoogle();
 
     dispatch(login(data));
   };
