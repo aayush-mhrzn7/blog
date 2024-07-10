@@ -11,9 +11,9 @@ function AllPost() {
     });
   }, []);
   return (
-    <div className=" justify-center items-center flex flex-wrap text-center">
+    <div className="grid grid-cols-4 gap-16 my-20 max-xl:grid-cols-2 max-sm:grid-cols-1">
       {posts.map((post) => (
-        <div key={post.$id} className="p-2 mt-5 w-[400px] h-[400px]">
+        <div key={post.$id}>
           <PostCard {...post} />
         </div>
       ))}

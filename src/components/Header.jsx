@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logout from "./Logout";
-
+import { TfiAlignRight } from "react-icons/tfi";
+import { TfiClose } from "react-icons/tfi";
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
-
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const navItems = [
     {
@@ -35,31 +36,54 @@ function Header() {
     },
   ];
   return (
-    <header className="p-7 px-28 max-sm:px-7 z-10 w-full h-12 flex items-center  justify-between  shadow-lg ">
-      <Link to="/" className="text-xl font-bold font-primary ">
-        Blog
-      </Link>
-      <nav className="flex  ">
-        <ul className="flex text-lg font-primary font-semibold ">
-          {navItems.map((item) =>
-            item.active ? (
-              <li
-                className=" mx-7 cursor-pointer  hover:text-blue-700 active:text-green-700 max-sm:mx-3"
-                key={item.name}
-                onClick={() => navigate(item.slug)}
-              >
-                {item.name}
-              </li>
-            ) : null
-          )}
-          {authStatus && (
-            <li className="mx-7 font-semibold">
-              <Logout></Logout>
+    <div>
+      <header className="flex z-50 bg-white justify-between py-2 px-10 text-xl h-14 shadow-md items-center ">
+        <Link to="/" className="font-primary font-bold">
+          Blog
+        </Link>
+        <nav>
+          <ul
+            className={` items-end  ease-in-out  ${
+              open
+                ? " flex-col mt-[190px] z-50  bg-black text-white p-3 rounded-md shadow-md "
+                : "flex"
+            }`}
+          >
+            <li
+              className="  hidden cursor-pointer max-sm:flex justify-end  ease-in-out"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <TfiClose /> : <TfiAlignRight />}
             </li>
-          )}
-        </ul>
-      </nav>
-    </header>
+
+            {navItems.map((item) =>
+              item.active ? (
+                <li
+                  key={item.name}
+                  onClick={() => navigate(`${item.slug}`)}
+                  className={`mx-5 font-primary z-50  cursor-pointer  hover:underline underline-offset-8 font-medium transition-transform ${
+                    open ? "max-sm:block p-2 mr-8   " : "max-sm:hidden"
+                  }`}
+                >
+                  {item.name}
+                </li>
+              ) : null
+            )}
+            {open && (
+              <li className="max-sm:block mx-7 hover:underline">
+                <Logout />
+              </li>
+            )}
+
+            <li>
+              {status ? (
+                <Logout className=" max-sm:hidden font-semibold" />
+              ) : null}
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
   );
 }
 
